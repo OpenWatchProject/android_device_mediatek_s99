@@ -1,6 +1,6 @@
 #
 #
-# system.prop for DOOGEE X5
+# system.prop for Infinix X510
 #
 
 rild.libpath=/system/lib/mtk-ril.so
@@ -21,11 +21,10 @@ ro.mediatek.wlan.p2p=1
 mediatek.wlan.ctia=0
 # MTK, mtk03034 20101213}
 
+
 #
 wifi.tethering.interface=ap0
 #
-
-ro.opengles.version=131072
 
 wifi.direct.interface=p2p0
 dalvik.vm.heapgrowthlimit=128m
@@ -37,7 +36,8 @@ ro.sys.usb.mtp.whql.enable=0
 # Power off opt in IPO
 sys.ipo.pwrdncap=2
 
-ro.sys.usb.storage.type=mtp,mass_storage
+F
+persist.sys.usb.config=mtp
 
 # USB BICR function
 ro.sys.usb.bicr=yes
@@ -48,17 +48,25 @@ ro.sys.usb.charging.only=yes
 # audio
 ro.camera.sound.forced=0
 ro.audio.silent=0
-persist.audio.dirac.speaker=true
 
 ro.zygote.preload.enable=0
 
 # temporary enables NAV bar (soft keys)
-qemu.hw.mainkeys=1
+qemu.hw.mainkeys=0
 
 ro.kernel.zio=38,108,105,16
+#ro.kernel.qemu=0
+#ro.kernel.qemu.gles=0
+ro.opengles.version=131072
+#ro.boot.selinux=disable
 
 # Disable dirty region for Mali
-debug.hwui.render_dirty_regions=true
+debug.hwui.render_dirty_regions=false
+
+# disable ipo for development
+sys.ipo.disable=1
+
+#ro.operator.optr=CUST
 
 ro.sf.lcd_density=320
 
@@ -68,7 +76,7 @@ persist.sys.button_jack_switch=0
 
 persist.tone_relative_volume=100
 ro.mediatek.chip_ver=S01
-ro.mediatek.version.release=DOOGEE-X5-Android6.0-20160813
+ro.mediatek.version.release=alps-mp-m0.mp3.a1sp-V1_rgk6580.a1.m_P8
 ro.mediatek.platform=MT6580
 ro.telephony.sim.count=2
 persist.radio.default.sim=0

@@ -2,10 +2,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
-$(call inherit-product, device/doogee/x5/vendor/copyfiles.mk)
-$(call inherit-product, vendor/doogee/x5/x5-vendor-blobs.mk)
+$(call inherit-product, device/infinix/x510/vendor/copyfiles.mk)
+$(call inherit-product, vendor/infinix/x510/x510-vendor-blobs.mk)
 
-LOCAL_PATH := device/doogee/x5
+LOCAL_PATH := device/infinix/x510
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -14,7 +14,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := x5,hct6580_weg_c_m
+TARGET_OTA_ASSERT_DEVICE := d5110,d5110_infinix,Infinix_X510,Infinix_X510_sprout,Infinix D5110,x510,hot2
 
 PRODUCT_PACKAGES += \
    libxlog

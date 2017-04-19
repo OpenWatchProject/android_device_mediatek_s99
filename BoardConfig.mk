@@ -1,6 +1,6 @@
 # mt6580 platform boardconfig
-LOCAL_PATH := device/doogee/x5
--include vendor/doogee/x5/BoardConfigVendor.mk
+LOCAL_PATH := device/infinix/x510
+-include vendor/infinix/x510/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -131,4 +131,4 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-       device/doogee/x5/sepolicy
+       device/infinix/x510/sepolicy
