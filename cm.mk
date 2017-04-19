@@ -1,11 +1,17 @@
-$(call inherit-product, device/doogee/x5/device_x5.mk)
+## Specify phone tech before including full_phone
+
+# Release name
+PRODUCT_RELEASE_NAME := sombrero
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
+# Inherit device configuration
+$(call inherit-product, device/blocks/sombrero/device_sombrero.mk)
+
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := x5
-PRODUCT_NAME := cm_x5
-PRODUCT_BRAND := DOOGEE
-PRODUCT_MODEL := X5
-PRODUCT_MANUFACTURER := DOOGEE
+PRODUCT_NAME := cm_sombrero
+PRODUCT_DEVICE := sombrero
+PRODUCT_BRAND := BLOCKS
+PRODUCT_MODEL := BLOCKS modular smartwatch
+PRODUCT_MANUFACTURER := BLOCKS
