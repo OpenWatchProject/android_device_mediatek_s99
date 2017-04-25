@@ -50,6 +50,11 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
      $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
+PRODUCT_PACKAGES += libmt6580
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=MT6580
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \

@@ -136,3 +136,6 @@ BOARD_SEPOLICY_DIRS := \
 
 # Hack for building without kernel sources
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+# RIL
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
