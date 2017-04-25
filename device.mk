@@ -173,7 +173,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
-    ro.telephony.ril.config=fakeiccid  \
+    ro.telephony.ril.config=signalstrength  \
     persist.call_recording.enabled=true \
     persist.call_recording.src=1 \
     persist.debug.wfd.enable=1
