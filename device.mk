@@ -199,10 +199,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Gello
 
-# FMRadio
+# FM Radio
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libmtkplayer
+FMRadio \
+libfmjni \
+libfmcust
 
 # Camera
 PRODUCT_PACKAGES += \
