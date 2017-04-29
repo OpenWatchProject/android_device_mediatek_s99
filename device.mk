@@ -202,8 +202,7 @@ PRODUCT_PACKAGES += \
 # FM Radio
 PRODUCT_PACKAGES += \
 FMRadio \
-libfmjni \
-libfmcust
+libfmjni
 
 # Camera
 PRODUCT_PACKAGES += \
