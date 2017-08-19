@@ -1,6 +1,6 @@
 #
 #
-# system.prop for Infinix X510
+# system.prop for Blocks Sombrero
 #
 
 rild.libpath=/system/lib/mtk-ril.so
@@ -68,7 +68,7 @@ sys.ipo.disable=1
 
 #ro.operator.optr=CUST
 
-ro.sf.lcd_density=320
+ro.sf.lcd_density=240
 
 # button jack mode & switch
 persist.sys.button_jack_profile=volume

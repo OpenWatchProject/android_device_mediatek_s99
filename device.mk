@@ -2,19 +2,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
-$(call inherit-product, device/infinix/x510/vendor/copyfiles.mk)
-$(call inherit-product, vendor/infinix/x510/x510-vendor-blobs.mk)
+$(call inherit-product, device/blocks/sombrero/vendor/copyfiles.mk)
+$(call inherit-product-if-exist, vendor/blocks/sombrero/sombrero-vendor-blobs.mk)
 
-LOCAL_PATH := device/infinix/x510
+LOCAL_PATH := device/blocks/sombrero
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_CONFIG := hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := d5110,d5110_infinix,Infinix_X510,Infinix_X510_sprout,Infinix D5110,x510,hot2
+TARGET_OTA_ASSERT_DEVICE := blocks_sombrero sombrero
 
 PRODUCT_PACKAGES += \
    libxlog
@@ -94,8 +94,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     $(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
@@ -118,10 +116,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -157,10 +152,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
 # STk
 PRODUCT_PACKAGES += \
     Stk
@@ -174,7 +165,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     ro.debuggable=1 \
-    ro.zygote=zygote64_32 \
+    ro.zygote=zygote32 \
     camera.disable_zsl_mode=1 \
     ro.mount.fs=EXT4 \
     persist.service.acm.enable=0 \
@@ -198,11 +189,6 @@ PRODUCT_PACKAGES += \
 # Browser
 PRODUCT_PACKAGES += \
     Gello
-
-# FM Radio
-PRODUCT_PACKAGES += \
-FMRadio \
-libfmjni
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -232,4 +218,4 @@ PRODUCT_PACKAGES += \
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 
 # Dalvik
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
