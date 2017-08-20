@@ -55,7 +55,7 @@ on property:persist.mediatek.fg.log.enable=1
     write /proc/sys/kernel/printk 8
 
 on charger
-    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
+    mount ext4 /dev/block/platform/mtk-msdc.0/11120000.MSDC0/by-name/system /system ro wait
     #mount ubifs ...
     mount ubifs ubi@system /system ro wait
     start spm_script
@@ -71,7 +71,7 @@ on charger
 on fs
     write /proc/bootprof "INIT:Mount_START"
     mount_all /fstab.mt6580
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
+    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11120000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
 on fs
