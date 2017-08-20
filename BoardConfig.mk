@@ -103,6 +103,7 @@ MTK_FM_RX_SUPPORT := true
 MTK_IRTX_SUPPORT := true
 
 # MTK_WLAN_SUPPORT
+# BOARD_WLAN_DEVICE := MediaTek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
@@ -114,7 +115,7 @@ WIFI_DRIVER_FW_PATH_AP := AP
 WIFI_DRIVER_FW_PATH_P2P := P2P
 
 # build old-style zip files (required for ota updater)
-BLOCK_BASED_OTA := false
+#BLOCK_BASED_OTA := false
 
 # make_ext4fs requires numbers in dec format
 TARGET_USERIMAGES_USE_EXT4 		:= true
@@ -135,7 +136,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 RECOVERY_VARIANT := twrp
 
 ifeq ($(RECOVERY_VARIANT),twrp)
-TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/twrp.fstab
+# TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/twrp.fstab
 TW_THEME := watch_mdpi
 TW_ROUND_SCREEN := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
@@ -149,9 +150,10 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true
 TW_EXCLUDE_SUPERSU := true
-else
-TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery.fstab
+#else
+#TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery.fstab
 endif
+TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true

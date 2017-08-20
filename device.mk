@@ -14,7 +14,7 @@ PRODUCT_AAPT_CONFIG := hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := blocks_sombrero sombrero
+TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 
 PRODUCT_PACKAGES += \
    libxlog
@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml \
+
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
