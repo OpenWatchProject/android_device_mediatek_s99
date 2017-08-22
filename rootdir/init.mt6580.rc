@@ -1,8 +1,6 @@
 # MTK platform .rc configure
 
 import init.project.rc
-import init.xlog.rc
-import init.aee.rc
 import init.nvdata.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
@@ -14,6 +12,8 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
+    export LD_SHIM_LIBS /system/lib/liblog.so|libmtkshim_log.so:/system/lib/libui.so|libmtkshim_ui.so
+
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
@@ -560,7 +560,7 @@ on post-fs-data
     mkdir /data/@btmtk 0770 bluetooth net_bt
     chown bluetooth bluetooth /dev/hid-keyboard
     chmod 0660 /dev/hid-keyboard
-    #Use uinput's default permission
+    #Use uinputs default permission
     chown system net_bt_admin /dev/uinput
 
     # UIBC
@@ -628,7 +628,7 @@ on post-fs-data
 
     # SMI
     chmod 0660 /dev/MTK_SMI
-    chown media media /dev/MTK_SMI
+    chown system camera /dev/MTK_SMI
 
     #for eng mode
     chmod 0664 /dev/misc-sd
@@ -1544,4 +1544,3 @@ service ipo_swap /system/bin/ipo_swap
     user root
     group root
     oneshot
-
