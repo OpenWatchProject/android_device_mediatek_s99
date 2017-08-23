@@ -1,6 +1,5 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/blocks/sombrero
--include vendor/blocks/sombrero/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
