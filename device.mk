@@ -18,7 +18,9 @@ TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 
 PRODUCT_PACKAGES += \
     libmtkshim_log \
-    libmtkshim_ui
+    libmtkshim_ui \
+    libmtkshim_gui \
+    libmtkshim_omx
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -61,6 +63,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
     $(LOCAL_PATH)/rootdir/fstab.mt6580:root/fstab.mt6580 \
     $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
     $(LOCAL_PATH)/rootdir/init.mt6580.rc:root/init.mt6580.rc \
     $(LOCAL_PATH)/rootdir/init.mt6580.usb.rc:root/init.mt6580.usb.rc \
     $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
