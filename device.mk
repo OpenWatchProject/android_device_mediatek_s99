@@ -18,7 +18,9 @@ TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 
 PRODUCT_PACKAGES += \
     libmtkshim_log \
-    libmtkshim_ui
+    libmtkshim_ui \
+    libmtkshim_gui \
+    libmtkshim_omx
 
 # Audio
 PRODUCT_PACKAGES += \

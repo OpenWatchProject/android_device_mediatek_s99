@@ -12,7 +12,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS /system/lib/liblog.so|libmtkshim_log.so:/system/lib/libui.so|libmtkshim_ui.so
+    export LD_SHIM_LIBS /system/lib/liblog.so|libmtkshim_log.so:/system/lib/libui.so|libmtkshim_ui.so:/system/lib/libshowlogo.so|libmtkshim_gui.so:/system/lib/libMtkOmxVdec.so|libmtkshim_omx.so
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
@@ -55,12 +55,13 @@ on property:persist.mediatek.fg.log.enable=1
     write /proc/sys/kernel/printk 8
 
 on charger
+    mkdir /dev/block/platform/mtk-msdc.0/by-name 0770 root system
+    symlink /dev/block/platform/mtk-msdc.0/11120000.MSDC0/by-name/logo /dev/block/platform/mtk-msdc.0/by-name/logo
+
     mount ext4 /dev/block/platform/mtk-msdc.0/11120000.MSDC0/by-name/system /system ro wait
-    #mount ubifs ...
-    mount ubifs ubi@system /system ro wait
     start spm_script
-		chmod 0666 /dev/kmsg
-		write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
+    chmod 0666 /dev/kmsg
+    write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
     start fuelgauged
     start kpoc_charger
     start servicemanager
