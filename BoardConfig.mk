@@ -1,6 +1,8 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/blocks/sombrero
 
+include vendor/mad/config/board.mk
+
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 USE_CAMERA_STUB := true
@@ -40,7 +42,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset 
 TARGET_KERNEL_SOURCE := kernel/blocks/sombrero
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_HEADER_ARCH := arm
-TARGET_KERNEL_CONFIG := cm_sombrero_defconfig
+TARGET_KERNEL_CONFIG := sf6580_weg_l_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 MTK_APPENDED_DTB_SUPPORT := yes
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
@@ -136,3 +138,11 @@ BOARD_SEPOLICY_DIRS := \
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+
+# Include needed symbols
+TARGET_INCLUDE_XLOG_SYMBOLS := true
+TARGET_INCLUDE_AUDIO_SYMBOLS := true
+TARGET_INCLUDE_UI_SYMBOLS := true
+TARGET_INCLUDE_GUI_SYMBOLS := true
+TARGET_INCLUDE_OMX_SYMBOLS := true
+include vendor/mad/config/symbols.mk

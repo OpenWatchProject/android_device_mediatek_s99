@@ -4,6 +4,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, device/blocks/sombrero/vendor/copyfiles.mk)
 $(call inherit-product, vendor/blocks/sombrero/sombrero-vendor.mk)
+$(call inherit-product, vendor/mad/config/common.mk)
 
 LOCAL_PATH := device/blocks/sombrero
 

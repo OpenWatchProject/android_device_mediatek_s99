@@ -5,15 +5,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/blocks/sombrero/device.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := sombrero
+PRODUCT_RELEASE_NAME := Sombrero
 
-EXTENDED_FONT_FOOTPRINT := true
-
+PRODUCT_DEVICE := sombrero
 PRODUCT_NAME := full_sombrero
-PRODUCT_DEVICE := blocks_sombrero
+
 PRODUCT_BRAND := BLOCKS
 PRODUCT_MODEL := BLOCKS modular smartwatch
 PRODUCT_MANUFACTURER := BLOCKS
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 
 PRODUCT_RESTRICT_VENDOR_FILES := false
