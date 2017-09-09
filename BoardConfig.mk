@@ -132,10 +132,6 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 
-# SELinux
-BOARD_SEPOLICY_DIRS := \
-       device/blocks/sombrero/sepolicy
-
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
@@ -146,3 +142,6 @@ TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_GUI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
 include vendor/mad/config/symbols.mk
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy

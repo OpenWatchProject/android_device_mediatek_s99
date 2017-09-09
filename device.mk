@@ -17,11 +17,15 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 
-PRODUCT_PACKAGES += \
-    libmtkshim_log \
-    libmtkshim_ui \
-    libmtkshim_gui \
-    libmtkshim_omx
+# Manifest
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
+
+#PRODUCT_PACKAGES += \
+#    libmtkshim_log \
+#    libmtkshim_ui \
+#    libmtkshim_gui \
+#    libmtkshim_omx
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -35,7 +39,15 @@ PRODUCT_PACKAGES += \
     libtinycompress
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -48,12 +60,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc
-
-# Keyboard layout
-PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-     $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
-     $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=MT6580
@@ -165,6 +171,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=1 \
     ro.mount.fs=EXT4
+
+# Seccomp policy
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril.config=signalstrength  \
