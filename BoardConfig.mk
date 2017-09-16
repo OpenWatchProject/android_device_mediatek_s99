@@ -1,6 +1,9 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/blocks/sombrero
 
+# HWC1 still, set this before including vendor/mad
+TARGET_USES_HWC1 := true
+
 include vendor/mad/config/board.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
@@ -142,6 +145,9 @@ TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_GUI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
 include vendor/mad/config/symbols.mk
+
+DEBUG_BOOT := true
+TARGET_SYSTEM_MINOR := 18
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy

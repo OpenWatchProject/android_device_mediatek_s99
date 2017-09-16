@@ -4,7 +4,7 @@ import init.project.rc
 import init.nvdata.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
-import init.modem.rc
+# import init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
 on early-init
@@ -12,7 +12,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS /system/lib/liblog.so|libmtkshim_log.so:/system/lib/libui.so|libmtkshim_ui.so:/system/lib/libshowlogo.so|libmtkshim_gui.so:/system/lib/libMtkOmxVdec.so|libmtkshim_omx.so
+#    export LD_SHIM_LIBS /system/lib/liblog.so|libmtkshim_log.so:/system/lib/libui.so|libmtkshim_ui.so:/system/lib/libshowlogo.so|# libmtkshim_gui.so:/system/lib/libMtkOmxVdec.so|libmtkshim_omx.so
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
@@ -74,10 +74,6 @@ on fs
     mount_all /fstab.mt6580
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11120000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
-
-on fs
-
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     # Support legacy paths
@@ -157,12 +153,6 @@ on post-fs-data
     mkdir /data/misc/radvd 0770 system system
     chmod 444 /etc/radvd/radvd.conf
 
-    # Mali 3D GPU driver
-    #insmod /system/lib/modules/mali.ko
-    #chmod 666 /dev/mali0
-    #chown system graphics /dev/mali
-
-
     #liuyang add begin
     chown root   radio  /sys/class/leds/red/brightness
     chown root   radio  /sys/class/leds/green/brightness
@@ -197,10 +187,7 @@ on post-fs-data
     mkdir /data/misc/rtc 0770 system system
 
     # M4U
-    #insmod /system/lib/modules/m4u.ko
-    #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
-    #chown system media /dev/M4U_device
 
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
@@ -418,14 +405,11 @@ on post-fs-data
     chmod 0755 /system/bin/memsicp
 
     #VideoCodec
-    #insmod /system/lib/modules/vcodec_kernel_driver.ko
     mknod /dev/Vcodec c 160 0
     chmod 0660 /dev/Vcodec
     chown media system /dev/Vcodec
 
     #MJC
-    #insmod /system/lib/modules/mjc_kernel_driver.ko
-    #mknod /dev/MJC c 168 0
     chmod 0660 /dev/MJC
     chown system media /dev/MJC
 
@@ -870,12 +854,12 @@ on property:vold.decrypt=trigger_shutdown_framework
     start stop_modem
     start swapoff_action
 
-service stop_modem /system/bin/md_ctrl 0
+service stop_modem /system/vendor/bin/md_ctrl 0
     class main
     disabled
     oneshot
 
-service start_modem /system/bin/md_ctrl 1
+service start_modem /system/vendor/bin/md_ctrl 1
     class main
     disabled
     oneshot
@@ -937,7 +921,7 @@ service netdiag /system/bin/netdiag
     socket netdiag stream 0664 root inet
 
 
-service nvram_daemon /system/bin/nvram_daemon
+service nvram_daemon /system/vendor/bin/nvram_daemon
     class main
     user root
     group system
@@ -1236,7 +1220,7 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #    class main
 #    oneshot
 
-service agpsd /system/bin/mtk_agpsd
+service agpsd /system/vendor/bin/mtk_agpsd
     class main
     socket agpsd stream 660 gps system
     socket agpsd2 stream 660 gps inet
@@ -1249,12 +1233,12 @@ service slpd /system/bin/slpd
     user gps
     group gps inet
 
-service wifi2agps /system/bin/wifi2agps
+service wifi2agps /system/vendor/bin/wifi2agps
     class main
     user wifi
     group gps inet
 
-service mnld /system/xbin/mnld
+service mnld /system/vendor/bin/mnld
     class main
     user gps
     group gps inet misc sdcard_rw sdcard_r media_rw system
@@ -1314,67 +1298,67 @@ service emdlogger6 /system/bin/emdlogger6
 #sensor service (begin)
 #
 
-service msensord /system/bin/msensord
+service msensord /system/vendor/bin/msensord
     class main
     oneshot
 
-service s62xd /system/bin/s62xd
+service s62xd /system/vendor/bin/s62xd
     disabled
     user compass
     group system
     class main
-service ami304d /system/bin/ami304d
+service ami304d /system/vendor/bin/ami304d
     user system
     group system
     disabled
     class main
 
-service memsicd /system/bin/memsicd
+service memsicd /system/vendor/bin/memsicd
      disabled
     user system
     group system
     class main
 
-service memsicd3416x /system/bin/memsicd3416x
+service memsicd3416x /system/vendor/bin/memsicd3416x
      disabled
 	 user system
     group system
     class main
-service akmd8975 /system/bin/akmd8975
+service akmd8975 /system/vendor/bin/akmd8975
     disabled
     user system
     group system
     class main
 
-service akmd8963 /system/bin/akmd8963
+service akmd8963 /system/vendor/bin/akmd8963
     disabled
     user system
     group system
     class main
 
-service memsicp /system/bin/memsicp
+service memsicp /system/vendor/bin/memsicp
     oneshot
     user system
     group system
     class main
 
-service akmd09911 /system/bin/akmd09911
+service akmd09911 /system/vendor/bin/akmd09911
     disabled
     user system
     group system
     class main
-service bmm050d /system/bin/bmm050d
+service bmm050d /system/vendor/bin/bmm050d
     disabled
     user system
     group system
     class main
 
-service bmm056d /system/bin/bmm056d
+service bmm056d /system/vendor/bin/bmm056d
     disabled
     user system
     group system
     class main
-service mc6420d /system/bin/mc6420d
+service mc6420d /system/vendor/bin/mc6420d
     disabled
     user system
     group system
@@ -1385,7 +1369,7 @@ service qmc5983d /system/bin/qmc5983d
     group system
     class main
 
-service orientationd /system/bin/orientationd
+service orientationd /system/vendor/bin/orientationd
     disabled
     user system
     group system input
@@ -1396,7 +1380,7 @@ service AcdApiDaemon /system/bin/AcdApiDaemon
     group system
     class main
 
-service geomagneticd /system/bin/geomagneticd
+service geomagneticd /system/vendor/bin/geomagneticd
     disabled
     user system
     group system input
@@ -1447,19 +1431,19 @@ service shutdown /system/bin/shutdown
     group root
     disabled
 
-service NvRAMAgent /system/bin/nvram_agent_binder
+service NvRAMAgent /system/vendor/bin/nvram_agent_binder
     class main
     user system
     group system
 
 #<<hct:liuyang
-service NvRAMBackupAgent /system/bin/nvram_backup_binder
+service NvRAMBackupAgent /system/vendor/bin/nvram_backup_binder
     class main
     user system
     group system bluetooth net_bt_stack
 #hct:liuyang
 
-service thermal_manager /system/bin/thermal_manager
+service thermal_manager /system/vendor/bin/thermal_manager
     class main
     user root
     oneshot
@@ -1479,7 +1463,7 @@ service fuelgauged /system/bin/fuelgauged
     user system
     group system
 
-#service sn /system/bin/sn
+#service sn /system/vendor/bin/sn
 #    class late_start
 #    user system
 #    group system sdcard_rw
@@ -1503,7 +1487,7 @@ service backuprestore /system/bin/br_app_data_service
 	socket backuprestore stream 0660 root sdcard_rw
 	user root
 
-#service BGW /system/xbin/BGW
+#service BGW /system/vendor/bin/BGW
 #	user system
 #	group gps system radio
 #	class main
@@ -1530,7 +1514,7 @@ on property:persist.service.operamax=1
 on property:persist.service.operamax=0
     stop OperaMaxSystem
 
-service kpoc_charger /system/bin/kpoc_charger
+service kpoc_charger /system/vendor/bin/kpoc_charger
     class charger
 
 # Program binary service
