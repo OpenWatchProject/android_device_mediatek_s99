@@ -220,5 +220,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 
+# low ram
+PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
+
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
