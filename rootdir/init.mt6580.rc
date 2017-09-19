@@ -400,9 +400,6 @@ on post-fs-data
 
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
-#add for memsic acc
-    chown root /system/bin/memsicp
-    chmod 0755 /system/bin/memsicp
 
     #VideoCodec
     mknod /dev/Vcodec c 160 0
@@ -834,49 +831,16 @@ on boot
     chmod 0660 /dev/ttyGS3
     chown system radio /dev/ttyGS3
 
-on property:vold.decrypt=trigger_reset_main
-    start stop_modem
-
 on property:vold.decrypt=trigger_restart_min_framework
-    start start_modem
-    start msensord
     start memsicp
     start permission_check
 
 on property:vold.decrypt=trigger_restart_framework
-    start nvram_daemon
-    start start_modem
-    start msensord
     start memsicp
     start permission_check
 
 on property:vold.decrypt=trigger_shutdown_framework
-    start stop_modem
     start swapoff_action
-
-service stop_modem /system/vendor/bin/md_ctrl 0
-    class main
-    disabled
-    oneshot
-
-service start_modem /system/vendor/bin/md_ctrl 1
-    class main
-    disabled
-    oneshot
-# Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,524288
-    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
-    setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
-    setprop net.tcp.buffersize.umts    4094,87380,524288,4096,16384,524288
-    setprop net.tcp.buffersize.hspa    4094,87380,524288,4096,16384,524288
-    setprop net.tcp.buffersize.hsupa   4094,87380,524288,4096,16384,524288
-    setprop net.tcp.buffersize.hsdpa   4094,87380,524288,4096,16384,524288
-    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
-    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
-
-    setprop persist.sys.strictmode.disable 1
 
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
@@ -920,12 +884,6 @@ service netdiag /system/bin/netdiag
     class main
     socket netdiag stream 0664 root inet
 
-
-service nvram_daemon /system/vendor/bin/nvram_daemon
-    class main
-    user root
-    group system
-    oneshot
 
 # DFO (Begin)
 service featured /system/bin/featured
@@ -979,11 +937,6 @@ service md_minilog_util /system/bin/md_minilog_util
     disabled
     oneshot
 
-service pq /system/bin/pq
-    class main
-    user system
-    group system graphics
-
 service aal /system/bin/aal
     class main
     user system
@@ -992,35 +945,6 @@ service aal /system/bin/aal
 # FOTA upgrade
 service rbfota /system/bin/fota1
     class main
-    disabled
-    oneshot
-
-
-service p2p_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
-    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -dd \
-    -I/system/etc/wifi/p2p_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin -dd \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
@@ -1216,33 +1140,10 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #  Modem related services (End)
 #
 
-#service agpsdcainit /system/bin/agpscacertinit
-#    class main
-#    oneshot
-
-service agpsd /system/vendor/bin/mtk_agpsd
-    class main
-    socket agpsd stream 660 gps system
-    socket agpsd2 stream 660 gps inet
-    socket agpsd3 stream 660 gps inet
-    user gps
-    group gps radio inet sdcard_r sdcard_rw misc
-
 service slpd /system/bin/slpd
     class main
     user gps
     group gps inet
-
-service wifi2agps /system/vendor/bin/wifi2agps
-    class main
-    user wifi
-    group gps inet
-
-service mnld /system/vendor/bin/mnld
-    class main
-    user gps
-    group gps inet misc sdcard_rw sdcard_r media_rw system
-    socket mnld stream 660 gps system
 
 service ipod /system/bin/ipod
     user root
@@ -1294,138 +1195,6 @@ service emdlogger6 /system/bin/emdlogger6
     disabled
     oneshot
 
-#
-#sensor service (begin)
-#
-
-service msensord /system/vendor/bin/msensord
-    class main
-    oneshot
-
-service s62xd /system/vendor/bin/s62xd
-    disabled
-    user compass
-    group system
-    class main
-service ami304d /system/vendor/bin/ami304d
-    user system
-    group system
-    disabled
-    class main
-
-service memsicd /system/vendor/bin/memsicd
-     disabled
-    user system
-    group system
-    class main
-
-service memsicd3416x /system/vendor/bin/memsicd3416x
-     disabled
-	 user system
-    group system
-    class main
-service akmd8975 /system/vendor/bin/akmd8975
-    disabled
-    user system
-    group system
-    class main
-
-service akmd8963 /system/vendor/bin/akmd8963
-    disabled
-    user system
-    group system
-    class main
-
-service memsicp /system/vendor/bin/memsicp
-    oneshot
-    user system
-    group system
-    class main
-
-service akmd09911 /system/vendor/bin/akmd09911
-    disabled
-    user system
-    group system
-    class main
-service bmm050d /system/vendor/bin/bmm050d
-    disabled
-    user system
-    group system
-    class main
-
-service bmm056d /system/vendor/bin/bmm056d
-    disabled
-    user system
-    group system
-    class main
-service mc6420d /system/vendor/bin/mc6420d
-    disabled
-    user system
-    group system
-    class main
-service qmc5983d /system/bin/qmc5983d
-     disabled
-	 user system
-    group system
-    class main
-
-service orientationd /system/vendor/bin/orientationd
-    disabled
-    user system
-    group system input
-    class main
-service AcdApiDaemon /system/bin/AcdApiDaemon
-    disabled
-    user system
-    group system
-    class main
-
-service geomagneticd /system/vendor/bin/geomagneticd
-    disabled
-    user system
-    group system input
-    class main
-
-service mpud6050 /system/bin/mpud6050
-    oneshot
-    user system
-    group system
-
-service mc64xxd /system/bin/mc64xxd
-    disabled
-    user system
-    group system
-    class main
-#
-#sensor service (end)
-#
-
-#
-#emsvr service (start)
-#
-on property:ro.build.type=eng
-    start emsvr
-
-on property:ro.build.type=user
-    start emsvr_user
-
-on property:ro.build.type=userdebug
-    start emsvr_user
-
-service emsvr_user /system/bin/em_svr
-    disabled
-    user system
-    group system radio diag net_bt_stack
-
-service emsvr /system/bin/em_svr
-    disabled
-    user root
-    group net_bt_stack
-
-#
-#emsvr service (end)
-#
-
 service shutdown /system/bin/shutdown
     user root
     group root
@@ -1442,32 +1211,6 @@ service NvRAMBackupAgent /system/vendor/bin/nvram_backup_binder
     user system
     group system bluetooth net_bt_stack
 #hct:liuyang
-
-service thermal_manager /system/vendor/bin/thermal_manager
-    class main
-    user root
-    oneshot
-
-service thermal /system/bin/thermal
-    class main
-    user system
-    group system inet
-
-service thermald /system/bin/thermald
-    class main
-    user system
-    group system
-
-service fuelgauged /system/bin/fuelgauged
-    class main
-    user system
-    group system
-
-#service sn /system/vendor/bin/sn
-#    class late_start
-#    user system
-#    group system sdcard_rw
-#    oneshot
 
 #add for power-off alarm
 service poad /system/bin/poad
@@ -1491,6 +1234,7 @@ service backuprestore /system/bin/br_app_data_service
 #	user system
 #	group gps system radio
 #	class main
+
 service MtkCodecService /system/bin/MtkCodecService
     class main
     user system
