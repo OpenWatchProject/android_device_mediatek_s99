@@ -177,3 +177,4 @@ keyguard.no_require_sim=true
 persist.sys.isUsbOtgEnabled=true
 camera.disable_zsl_mode=1
 persist.debug.wfd.enable=1
+media.settings.xml=/vendor/etc/media_profiles.xml
