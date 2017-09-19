@@ -146,8 +146,5 @@ TARGET_INCLUDE_GUI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
 include vendor/mad/config/symbols.mk
 
-DEBUG_BOOT := true
-TARGET_SYSTEM_MINOR := 18
-
 # SELinux
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
