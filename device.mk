@@ -57,9 +57,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/vendor/etc/bluetooth/bt_stack.conf.debug \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/vendor/etc/bluetooth/bt_stack.conf.sqc
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=MT6580
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/WMT_SOC.cfg:root/WMT_SOC.cfg \
