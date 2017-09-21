@@ -1,5 +1,5 @@
 # Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/blocks/sombrero/device.mk)

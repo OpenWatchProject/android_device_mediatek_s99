@@ -79,6 +79,7 @@ on fs
     write /proc/bootprof "INIT:Mount_END"
 
 on post-fs
+    setprop sys.post-fs 1
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
 
@@ -115,8 +116,6 @@ on post-fs
     chmod 0770 /custom
 
 on post-fs-data
-
-
 
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
 
@@ -711,8 +710,8 @@ on post-fs-data
 
 on boot
 
-    # xlog
-    start xlogboot
+    start wmtLoader
+    start conn_launcher
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
@@ -1279,3 +1278,16 @@ service ipo_swap /system/bin/ipo_swap
     user root
     group root
     oneshot
+
+service wmtLoader /vendor/bin/wmt_loader
+    user root
+    group root
+    class core
+    disabled
+    oneshot
+
+service conn_launcher /vendor/bin/6620_launcher -p /vendor/etc/firmware/
+    user system
+    group system
+    class core
+    disabled
