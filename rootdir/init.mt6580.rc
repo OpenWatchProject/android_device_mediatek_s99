@@ -1,6 +1,6 @@
 # MTK platform .rc configure
 
-import init.project.rc
+import init.mt6580.usb.rc
 import init.nvdata.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
@@ -31,6 +31,9 @@ on init
     insmod /lib/modules/ubi.ko
     insmod /lib/modules/ubifs.ko
 
+    chmod 0666 /dev/kmsg
+    write /proc/sys/kernel/printk 8
+
 # Create CIP mount point
     mkdir /custom
 
@@ -50,7 +53,7 @@ on property:persist.mediatek.fg.disable=1
     write /sys/devices/platform/battery_meter/FG_daemon_disable 1
 
 on property:persist.mediatek.fg.log.enable=1
-		chmod 0666 /dev/kmsg
+    chmod 0666 /dev/kmsg
     write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
     write /proc/sys/kernel/printk 8
 
@@ -625,6 +628,9 @@ on post-fs-data
 #nvram
     chmod 0660 /dev/mtd/mtd2
     chown root system /dev/mtd/mtd2
+
+    setprop service.nvram_init Ready
+
 #seccfg
     chmod 0660 /dev/mtd/mtd4
     chown root system /dev/mtd/mtd4
