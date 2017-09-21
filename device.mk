@@ -21,12 +21,6 @@ TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
 
-#PRODUCT_PACKAGES += \
-#    libmtkshim_log \
-#    libmtkshim_ui \
-#    libmtkshim_gui \
-#    libmtkshim_omx
-
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.default \
@@ -115,10 +109,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # Wifi
 PRODUCT_PACKAGES += \
     lib_driver_cmd_mt66xx \
@@ -136,10 +126,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
-# STk
-#PRODUCT_PACKAGES += \
-#    Stk
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/vendor/etc/agps_profiles_conf2.xml \
@@ -149,7 +135,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera.disable_zsl_mode=1 \
     ro.mount.fs=EXT4
 
 # Seccomp policy
@@ -157,9 +142,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril.config=signalstrength  \
-    persist.call_recording.enabled=true \
-    persist.call_recording.src=1 \
     persist.debug.wfd.enable=1
 
 PRODUCT_PACKAGES += \
@@ -169,25 +151,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnl_2 \
     libtinyxml
-    
-# Browser
-PRODUCT_PACKAGES += \
-    Gello
-
-# Camera
-#PRODUCT_PACKAGES += \
-#    Snap
-
-# Messaging
-PRODUCT_PACKAGES += \
-    messaging
 
 # Lights
 PRODUCT_PACKAGES += \
     lights.mt6580
-
-# Sensor Calibration
-PRODUCT_PACKAGES += libem_sensor_jni
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
