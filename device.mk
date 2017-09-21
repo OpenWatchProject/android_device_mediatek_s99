@@ -62,25 +62,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
-    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
+    $(LOCAL_PATH)/rootdir/WMT_SOC.cfg:root/WMT_SOC.cfg \
     $(LOCAL_PATH)/rootdir/fstab.mt6580:root/fstab.mt6580 \
     $(LOCAL_PATH)/rootdir/init.mt6580.rc:root/init.mt6580.rc \
     $(LOCAL_PATH)/rootdir/init.mt6580.usb.rc:root/init.mt6580.usb.rc \
-    $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
     $(LOCAL_PATH)/rootdir/init.performance.rc:root/init.performance.rc \
     $(LOCAL_PATH)/rootdir/init.nvdata.rc:root/init.nvdata.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6580.rc:root/ueventd.mt6580.rc
-
-#    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc
-
-# Telecom
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/apns-conf.xml:system/vendor/etc/apns-conf.xml \
-    $(LOCAL_PATH)/configs/ecc_list.xml:system/vendor/etc/ecc_list.xml \
-    $(LOCAL_PATH)/configs/spn-conf.xml:system/vendor/etc/spn-conf.xml
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -152,8 +140,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
 # STk
-PRODUCT_PACKAGES += \
-    Stk
+#PRODUCT_PACKAGES += \
+#    Stk
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -190,8 +178,8 @@ PRODUCT_PACKAGES += \
     Gello
 
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+#    Snap
 
 # Messaging
 PRODUCT_PACKAGES += \
