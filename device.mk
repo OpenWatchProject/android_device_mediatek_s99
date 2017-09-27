@@ -150,6 +150,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.mt6580
 
+# SensorWrapper (based off MultiHal)
+PRODUCT_PACKAGES += \
+    sensors.mt6580
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
