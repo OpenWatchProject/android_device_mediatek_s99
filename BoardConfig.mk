@@ -50,6 +50,9 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 MTK_APPENDED_DTB_SUPPORT := yes
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
+# suspend mode
+TARGET_USES_EARLY_SUSPEND := true
+
 # Display
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
