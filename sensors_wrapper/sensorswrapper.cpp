@@ -16,7 +16,6 @@
 
 #include "SensorEventQueue.h"
 
-#define DEBUG 0
 #include <cutils/log.h>
 #include <cutils/atomic.h>
 #include <hardware/sensors.h>
@@ -36,6 +35,8 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+static bool DEBUG = 0;
 
 static pthread_mutex_t init_modules_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t init_sensors_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -495,12 +496,18 @@ static void fix_sensor_fields(sensor_t& sensor) {
     case SENSOR_TYPE_TILT_DETECTOR:
         sensor.flags = SENSOR_FLAG_WAKE_UP | SENSOR_FLAG_ON_CHANGE_MODE;
         break;
+
+    case SENSOR_TYPE_HEART_RATE:
+	sensor.requiredPermission = SENSOR_PERMISSION_BODY_SENSORS;
+        break;
+
     /*
      * Report a proper range to fix doze proximity check.
      */
     case SENSOR_TYPE_PROXIMITY:
         sensor.maxRange = 5.0;
         break;
+
     }
 }
 
