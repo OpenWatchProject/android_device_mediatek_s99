@@ -204,4 +204,11 @@
 
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
+    <bool name="config_dozePulsePickup">true</bool>
+
+    <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
+    <string name="config_dozeDoubleTapSensorType" translatable="false">android.sensor.wake_gesture</string>
+
 </resources>
