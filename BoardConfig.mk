@@ -127,6 +127,7 @@ ifeq ($(RECOVERY_VARIANT),twrp)
 # TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/twrp.fstab
 TW_THEME := watch_mdpi
 TW_ROUND_SCREEN := true
+TW_SCREEN_BLANK_ON_BOOT := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_INCLUDE_FB2PNG := true
 TW_REBOOT_BOOTLOADER := true
