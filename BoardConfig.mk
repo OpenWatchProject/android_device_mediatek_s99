@@ -1,10 +1,8 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/blocks/sombrero
 
-# HWC1 still, set this before including vendor/mad
+# HWC1
 TARGET_USES_HWC1 := true
-
-include vendor/mad/config/board.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -55,10 +53,12 @@ TARGET_USES_EARLY_SUSPEND := true
 
 # Display
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
+BOARD_EGL_CFG := device/blocks/sombrero/configs/etc/egl.cfg
 TARGET_SCREEN_HEIGHT := 400
 TARGET_SCREEN_WIDTH := 400
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 0
@@ -66,14 +66,8 @@ USE_XML_AUDIO_POLICY_CONF := 0
 # Memory Config
 MALLOC_SVELTE := true
 
-# Flags
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
 # LightHAL
 TARGET_PROVIDES_LIBLIGHT := true
-
-# HeartRate Sensor workaround
-TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
 # SensorHAL
 TARGET_SENSORS_DEVICE_API_VERSION := SENSORS_DEVICE_API_VERSION_1_3
@@ -92,10 +86,8 @@ BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
-# GPS
-BOARD_GPS_LIBRARIES := true
-
 # Wifi
+BOARD_WLAN_DEVICE := MediaTek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
@@ -121,35 +113,11 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-RECOVERY_VARIANT := twrp
+# Boot animation
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 
-ifeq ($(RECOVERY_VARIANT),twrp)
-# TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/twrp.fstab
-TW_THEME := watch_mdpi
-TW_ROUND_SCREEN := true
-TW_SCREEN_BLANK_ON_BOOT := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_INCLUDE_FB2PNG := true
-TW_REBOOT_BOOTLOADER := true
-TW_REBOOT_RECOVERY := true
-BOARD_HAS_FLIPPED_SCREEN := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TW_EXCLUDE_SUPERSU := true
-#else
-#TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery.fstab
-endif
-TARGET_RECOVERY_FSTAB := device/blocks/sombrero/recovery/etc/recovery.fstab
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_RECOVERY_SWIPE := true
-BOARD_SUPPRESS_EMMC_WIPE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
-
-# RIL
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+# Charger
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Include needed symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := true
@@ -157,7 +125,10 @@ TARGET_INCLUDE_AUDIO_SYMBOLS := true
 TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_GUI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
-include vendor/mad/config/symbols.mk
+include device/blocks/sombrero/configs/other/symbols.mk
 
-# SELinux
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+# DEXPREOPT
+ifeq ($(TARGET_BUILD_VARIANT),user)
+WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true
+endif

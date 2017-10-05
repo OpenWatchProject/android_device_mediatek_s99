@@ -78,6 +78,9 @@
     </string-array>
 
     <bool name="config_wifi_background_scan_support">true</bool>
+
+    <!-- Wifi DualBand -->
+    <bool name="config_wifi_dual_band_support">true</bool> 
    
     <bool name="config_automatic_brightness_available">false</bool>
     
@@ -185,6 +188,24 @@
          on screen size and total memory for the largest lowmemorykiller bucket, and scaled
          proportionally to the smaller buckets. -1 keeps the default. -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">-1</integer>
+
+    <!-- Control whether Night display is available. -->
+    <bool name="config_nightDisplayAvailable">true</bool>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm64/boot-framework.oat"</item>
+        <item>"/system/framework/oat/arm64/services.odex"</item>
+        <item>"/system/framework/arm64/boot.oat"</item>
+        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
+    </string-array>
+
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- The Google provider -->
+        <item>com.google.android.gms</item>
+        <!-- The standard AOSP fused location provider -->
+        <item>com.android.location.fused</item>
+    </string-array>
 
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->

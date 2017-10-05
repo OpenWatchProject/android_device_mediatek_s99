@@ -3,7 +3,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/blocks/sombrero/vendor/copyfiles.mk)
 $(call inherit-product, vendor/blocks/sombrero/sombrero-vendor.mk)
-$(call inherit-product, vendor/mad/config/common.mk)
 
 LOCAL_PATH := device/blocks/sombrero
 
@@ -123,14 +122,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
-# GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/vendor/etc/agps_profiles_conf2.xml \
-
-# TWRP
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.mount.fs=EXT4
 
@@ -170,3 +161,82 @@ PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+# Shim libraries
+PRODUCT_PACKAGES += \
+    libmtkshim_log \
+    libmtkshim_audio \
+    libmtkshim_ui \
+    libmtkshim_gui \
+    libmtkshim_omx
+
+# Display
+PRODUCT_PACKAGES += \
+    libion
+
+# Gralloc
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.renderscript@1.0-impl
+
+# HW Composer
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.1-impl
+
+# Light HAL
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
+
+# Memtrack
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl
+
+# PowerHAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl
+
+# VibratorHAL
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    fsck.f2fs \
+    mkfs.f2fs \
+    make_ext4fs
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+
+# SELinux
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.selinux=1
+
+# include other configs
+include device/blocks/sombrero/configs/other/permissions.mk
+include device/blocks/sombrero/configs/other/media.mk
+include device/blocks/sombrero/configs/other/wifi.mk
+include device/blocks/sombrero/configs/other/google_override.mk
