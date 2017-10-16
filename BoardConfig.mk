@@ -32,6 +32,9 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 BOARD_USES_MTK_HARDWARE := true
 
+# recovery
+TARGET_RECOVERY_FSTAB := device/blocks/sombrero/rootdir/recovery.fstab
+
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE = 0x80000000
