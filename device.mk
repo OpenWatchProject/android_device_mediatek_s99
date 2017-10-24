@@ -19,6 +19,10 @@ TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
 
+# bootanimation
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bootanimation.zip:system/media/bootanimation.zip
+
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.default \
