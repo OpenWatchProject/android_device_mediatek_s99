@@ -1,6 +1,11 @@
 import init.mt6580.usb.rc
 import init.nvdata.rc
 
+on early-init
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    chown system system /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
 on init
     # mount points
     mkdir /protect_f 0771 system system
