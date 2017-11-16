@@ -141,6 +141,9 @@ on post-fs-data
     # Thermal	
     mkdir /data/.tp/ 0775 system system
 
+    # Disable package parsing to allow for faster incremental development.
+    setprop pm.boot.disable_package_cache true
+
 on boot
     write /proc/sys/vm/dirty_writeback_centisecs 300
 
