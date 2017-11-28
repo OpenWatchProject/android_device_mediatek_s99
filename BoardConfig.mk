@@ -135,3 +135,6 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
 endif
+
+# Inherit from proprietary files
+include vendor/mediatek/mt6580-common/BoardConfigVendor.mk

@@ -1,7 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/mediatek/mt6580-common/vendor/copyfiles.mk)
 $(call inherit-product, vendor/mediatek/mt6580-common/mt6580-common-vendor.mk)
 
 LOCAL_PATH := device/mediatek/mt6580-common
