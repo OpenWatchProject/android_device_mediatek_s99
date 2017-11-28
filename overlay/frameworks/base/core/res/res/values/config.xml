@@ -19,7 +19,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Enable the electron beam -->
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
@@ -80,10 +80,10 @@
     <bool name="config_wifi_background_scan_support">true</bool>
 
     <!-- Wifi DualBand -->
-    <bool name="config_wifi_dual_band_support">true</bool> 
-   
+    <bool name="config_wifi_dual_band_support">false</bool>
+
     <bool name="config_automatic_brightness_available">false</bool>
-    
+
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
@@ -156,9 +156,6 @@
         <item>100</item>
     </integer-array>
 
-    <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-    <bool name="config_cellBroadcastAppLinks">true</bool>
-
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
     <integer name="config_shutdownBatteryTemperature">680</integer>
 
@@ -167,18 +164,8 @@
     <!-- Whether safe headphone volume is enabled or not (country specific). -->
     <bool name="config_safe_media_volume_enabled">true</bool>
 
-    <!-- If supported, are dreams enabled? (by default) -->
-    <bool name="config_dreamsEnabledByDefault">true</bool>
-
-    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
-
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">false</bool>
-
-    <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-    <!--  Whether Multiuser UI should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
 
     <!-- Device configuration setting the minfree tunable in the lowmemorykiller in the
          kernel. A high value will cause the lowmemorykiller to fire earlier, keeping more
@@ -190,7 +177,7 @@
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">-1</integer>
 
     <!-- Control whether Night display is available. -->
-    <bool name="config_nightDisplayAvailable">true</bool>
+    <bool name="config_nightDisplayAvailable">false</bool>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
@@ -207,13 +194,38 @@
         <item>com.android.location.fused</item>
     </string-array>
 
+    <integer name="config_defaultUiModeType">6</integer>
+
+    <integer name="config_longPressOnPowerBehavior">1</integer>
+    <integer name="config_shortPressOnPowerBehavior">1</integer>
+    <integer name="config_doublePressOnPowerBehavior">2</integer>
+    <integer name="config_triplePressOnPowerBehavior">0</integer>
+    <integer name="config_shortPressOnSleepBehavior">1</integer>
+
+    <bool name="config_bluetooth_default_profiles">false</bool>
+    <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
+    <integer translatable="false" name="config_bluetooth_max_scan_filters">1</integer>
+
+    <bool name="config_voice_capable">false</bool>
+    <bool name="config_sms_capable">false</bool>
+    <bool name="config_built_in_sip_phone">false</bool>
+
+    <bool name="config_dreamsSupported">false</bool>
+    <bool name="config_dreamsEnabledByDefault">true</bool>
+    <bool name="config_dreamsActivatedOnDockByDefault">true</bool>
+    <bool name="config_dreamsActivatedOnSleepByDefault">true</bool>
+    <bool name="config_dreamsEnabledOnBattery">true</bool>
+
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
     <!-- If true, the doze component is not started until after the screen has been turned off
          and the screen off animation has been performed. -->
-    <bool name="config_dozeAfterScreenOff">true</bool>
+    <bool name="config_dozeAfterScreenOff">false</bool>
+
+    <!-- This one would make watchface freeze in oreo -->
+    <!--<bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>-->
 
     <!-- Specifies whether to decouple the interactive state of the device from the display on/off state. -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
@@ -225,6 +237,12 @@
 
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <bool name="config_supportAutoRotation">false</bool>
+
+    <bool name="config_forceDefaultOrientation">true</bool>
+    <bool name="config_windowIsRound">true</bool>
+    <bool name="config_hasRecents">false</bool>
 
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
