@@ -1,19 +1,16 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
-$(call inherit-product, device/blocks/sombrero/vendor/copyfiles.mk)
-$(call inherit-product, vendor/blocks/sombrero/sombrero-vendor.mk)
+$(call inherit-product, device/mediatek/mt6580-common/vendor/copyfiles.mk)
+$(call inherit-product, vendor/mediatek/mt6580-common/mt6580-common-vendor.mk)
 
-LOCAL_PATH := device/blocks/sombrero
+LOCAL_PATH := device/mediatek/mt6580-common
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
-
-# Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := blocks_sombrero,sombrero
 
 # Manifest
 PRODUCT_COPY_FILES += \
@@ -241,7 +238,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
 # include other configs
-include device/blocks/sombrero/configs/other/permissions.mk
-include device/blocks/sombrero/configs/other/media.mk
-include device/blocks/sombrero/configs/other/wifi.mk
-include device/blocks/sombrero/configs/other/google_override.mk
+include device/mediatek/mt6580-common/configs/other/permissions.mk
+include device/mediatek/mt6580-common/configs/other/media.mk
+include device/mediatek/mt6580-common/configs/other/wifi.mk
+include device/mediatek/mt6580-common/configs/other/google_override.mk

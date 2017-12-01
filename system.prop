@@ -1,6 +1,6 @@
 #
 #
-# system.prop for Blocks Sombrero
+# system.prop for Mediatek mt6580
 #
 
 rild.libpath=/system/lib/mtk-ril.so

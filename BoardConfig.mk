@@ -1,5 +1,5 @@
 # mt6580 platform boardconfig
-LOCAL_PATH := device/blocks/sombrero
+LOCAL_PATH := device/mediatek/mt6580-common
 
 # HWC1
 TARGET_USES_HWC1 := true
@@ -32,8 +32,8 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 BOARD_USES_MTK_HARDWARE := true
 
-# recovery
-TARGET_RECOVERY_FSTAB := device/blocks/sombrero/rootdir/recovery.fstab
+# Recovery
+TARGET_RECOVERY_FSTAB := device/mediatek/mt6580-common/rootdir/recovery.fstab
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
@@ -43,7 +43,7 @@ BOARD_RAMDISK_OFFSET = 0x04000000
 BOARD_TAGS_OFFSET = 0xE000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET)
-TARGET_KERNEL_SOURCE := kernel/blocks/sombrero
+TARGET_KERNEL_SOURCE := kernel/mediatek/mt6580
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_HEADER_ARCH := arm
 TARGET_KERNEL_CONFIG := sf6580_weg_l_defconfig
@@ -56,7 +56,7 @@ TARGET_USES_EARLY_SUSPEND := true
 
 # Display
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/blocks/sombrero/configs/etc/egl.cfg
+BOARD_EGL_CFG := device/mediatek/mt6580-common/configs/etc/egl.cfg
 TARGET_SCREEN_HEIGHT := 400
 TARGET_SCREEN_WIDTH := 400
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
@@ -128,7 +128,7 @@ TARGET_INCLUDE_AUDIO_SYMBOLS := true
 TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_GUI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
-include device/blocks/sombrero/configs/other/symbols.mk
+include device/mediatek/mt6580-common/configs/other/symbols.mk
 
 # DEXPREOPT
 ifeq ($(TARGET_BUILD_VARIANT),user)
