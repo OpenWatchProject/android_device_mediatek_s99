@@ -256,7 +256,4 @@
     <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
     <string name="config_dozeDoubleTapSensorType" translatable="false">android.sensor.wake_gesture</string>
 
-    <!-- Doze always on: enable option to always display doze screen, instead of turning it off -->
-    <bool name="config_dozeAlwaysOnAvailable">true</bool>
-
 </resources>
