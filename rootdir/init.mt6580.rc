@@ -26,6 +26,8 @@ on charger
     write /sys/devices/platform/mt_usb/cmode 0
 
 on fs
+    wait /dev/block/platform/mtk-msdc.0/${ro.boot.bootdevice}
+    symlink /dev/block/platform/mtk-msdc.0/${ro.boot.bootdevice} /dev/block/platform/mtk-msdc.0
     mount_all /fstab.mt6580
     swapon_all /fstab.mt6580
 
