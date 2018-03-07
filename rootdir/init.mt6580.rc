@@ -7,6 +7,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
+    export LD_PRELOAD "libshim_zw.so"
     # mount points
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system

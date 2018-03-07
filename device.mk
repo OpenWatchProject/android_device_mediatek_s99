@@ -160,7 +160,8 @@ PRODUCT_PACKAGES += \
     libmtkshim_audio \
     libmtkshim_ui \
     libmtkshim_gui \
-    libmtkshim_omx
+    libmtkshim_omx \
+    libmtkshim_zw
 
 # Display
 PRODUCT_PACKAGES += \
