@@ -1,6 +1,9 @@
 #include <stdint.h>
+#include <string>
+#define ANDROID_ATOMIC_INLINE
 
 extern "C" {
+    #include <cutils/atomic.h>
     bool _ZN7android11AudioSystem24getVoiceUnlockDLInstanceEv(){
         return 0;
     }
