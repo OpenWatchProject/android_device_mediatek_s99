@@ -13,4 +13,34 @@
 
 <resources>
    <style name="Theme.SettingsBase" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" />
+
+   <style name="Theme.Settings" parent="Theme.SettingsBase">
+       <item name="preferenceTheme">@style/PreferenceTheme</item>
+       <item name="android:listPreferredItemHeight">72dip</item>
+       <item name="*android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>
+       <item name="*android:preferencePanelStyle">@style/PreferencePanelSinglePane</item>
+       <item name="*android:preferenceListStyle">@style/PreferenceHeaderListSinglePane</item>
+       <item name="*android:preferenceFragmentListStyle">@style/PreferenceFragmentListSinglePane</item>
+       <item name="*android:preferenceFragmentPaddingSide">@dimen/settings_side_margin</item> 
+
+       <item name="android:windowSwipeToDismiss">true</item>
+
+       <item name="fingerprint_layout_theme">@style/FingerprintLayoutTheme</item>
+       <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_holo_dark</item>
+       <item name="ic_wps">@drawable/ic_wps_light</item>
+       <item name="wifi_signal">@drawable/wifi_signal</item>
+       <item name="wifi_signal_color">?android:attr/colorAccent</item>
+       <item name="wifi_friction">@drawable/wifi_friction</item>
+       <item name="side_margin">@dimen/settings_side_margin</item>
+       <item name="suwListItemIconColor">?android:attr/colorAccent</item>
+
+        <!-- Redefine the ActionBar style for contentInsetStart -->
+       <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
+       <item name="switchBarTheme">@style/ThemeOverlay.SwitchBar.Settings</item>
+       <item name="preferenceBackgroundColor">@drawable/preference_background</item>
+
+       <!-- For all Alert Dialogs -->
+       <item name="android:alertDialogTheme">@style/Theme.AlertDialog</item>
+       <item name="*android:lockPatternStyle">@style/LockPatternStyle.Setup</item>
+   </style>
 </resources>
