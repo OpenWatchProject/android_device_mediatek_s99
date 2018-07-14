@@ -12,4 +12,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
    <string name="about_settings" product="default">About watch</string>
+   <string name="accessibility_settings_summary">Screen readers, display size</string>
+   <string name="ambient_display_title" product="default">Double-tap to check watch</string>
+   <string name="ambient_display_pickup_title" product="default">Lift to check watch</string>
+   <string name="ambient_display_pickup_summary" product="default">To check time, notification icons, and other info, pick up your watch.</string>
 </resources>
