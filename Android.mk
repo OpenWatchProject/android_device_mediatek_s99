@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter 8gb 16gb,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),harmony)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

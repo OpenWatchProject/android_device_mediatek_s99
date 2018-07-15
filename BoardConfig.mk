@@ -1,5 +1,5 @@
 # mt6580 platform boardconfig
-LOCAL_PATH := device/mediatek/mt6580-common
+LOCAL_PATH := device/mediatek/harmony
 
 # HWC1
 TARGET_USES_HWC1 := true
@@ -33,7 +33,7 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 BOARD_USES_MTK_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/mediatek/mt6580-common/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/mediatek/harmony/rootdir/recovery.fstab
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
@@ -57,7 +57,7 @@ TARGET_USES_EARLY_SUSPEND := true
 
 # Display
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/mediatek/mt6580-common/configs/etc/egl.cfg
+BOARD_EGL_CFG := device/mediatek/harmony/configs/etc/egl.cfg
 TARGET_SCREEN_HEIGHT := 400
 TARGET_SCREEN_WIDTH := 400
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
@@ -108,6 +108,7 @@ WIFI_DRIVER_FW_PATH_P2P := P2P
 # make_ext4fs requires numbers in dec format
 BOARD_BOOTIMAGE_PARTITION_SIZE      := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE  := 16777216
+BOARD_USERDATAIMAGE_PARTITION_SIZE  := 1610612736
 BOARD_SYSTEMIMAGE_PARTITION_SIZE    := 998244352
 BOARD_CACHEIMAGE_PARTITION_SIZE     := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE   := ext4
@@ -133,4 +134,4 @@ WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
 
 # Inherit from proprietary files
-include vendor/mediatek/mt6580-common/BoardConfigVendor.mk
+include vendor/mediatek/harmony/BoardConfigVendor.mk

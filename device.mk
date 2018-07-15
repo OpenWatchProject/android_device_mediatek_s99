@@ -1,8 +1,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product, vendor/mediatek/mt6580-common/mt6580-common-vendor.mk)
+$(call inherit-product, vendor/mediatek/harmony/harmony-vendor.mk)
 
-LOCAL_PATH := device/mediatek/mt6580-common
+LOCAL_PATH := device/mediatek/harmony
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -233,7 +233,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
 # include other configs
-include device/mediatek/mt6580-common/configs/other/permissions.mk
-include device/mediatek/mt6580-common/configs/other/media.mk
-include device/mediatek/mt6580-common/configs/other/wifi.mk
-include device/mediatek/mt6580-common/configs/other/google_override.mk
+include device/mediatek/harmony/configs/other/permissions.mk
+include device/mediatek/harmony/configs/other/media.mk
+include device/mediatek/harmony/configs/other/wifi.mk
+include device/mediatek/harmony/configs/other/google_override.mk
