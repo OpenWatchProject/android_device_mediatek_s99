@@ -26,9 +26,6 @@
     <!-- Doze: should the significant motion sensor be used as a pulse signal? -->
     <bool name="doze_pulse_on_significant_motion">true</bool>
 
-    <!-- Disable KeyguardSerivce -->
-    <bool name="config_enableKeyguardService">false</bool>
-
     <!-- Hardware ui (power menu) alignement:
          Use one of the following values basing on the power button position:
          * Top | Back -> 49 (Gravity.TOP | Gravity.CENTER_HORIZONTAL)
@@ -36,4 +33,5 @@
          * Right -> 53 (Gravity.TOP | Gravity.RIGHT)
     -->
     <integer name="hardware_ui_align">49</integer>
+
 </resources>
