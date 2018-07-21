@@ -4,7 +4,7 @@
 #
 
 # Display Size
-ro.sf.lcd_density=240
+ro.sf.lcd_density=160
 
 # Ril
 rild.libpath=/system/lib/mtk-ril.so
