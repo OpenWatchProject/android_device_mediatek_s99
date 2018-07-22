@@ -18,13 +18,22 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.default \
+    audio.a2dp.default \
     audio_policy.stub \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
     tinymix \
     libtinyalsa \
-    libtinycompress
+    libtinycompress \
+    libtinymix \
+    libtinyxml
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.soundtrigger@2.0-impl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/audio_device.xml:system/vendor/etc/audio_device.xml \
     $(LOCAL_PATH)/configs/media/audio_policy.conf:system/vendor/etc/audio_policy.conf \
@@ -39,9 +48,8 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    audio.a2dp.default
-PRODUCT_PACKAGES += \
     libbt-vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/bluetooth/auto_pair_devlist.conf:system/vendor/etc/bluetooth/auto_pair_devlist.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_did.conf:system/vendor/etc/bluetooth/bt_did.conf \
@@ -59,10 +67,10 @@ PRODUCT_COPY_FILES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/thermal/.ht120.mtc:system/vendor/etc/.tp/.ht120.mtc \
-     $(LOCAL_PATH)/configs/thermal/thermal.conf:system/vendor/etc/.tp/thermal.conf \
-     $(LOCAL_PATH)/configs/thermal/thermal.off.conf:system/vendor/etc/.tp/thermal.off.conf \
-     $(LOCAL_PATH)/configs/thermal/.thermal_policy_00:system/vendor/etc/.tp/.thermal_policy_00
+    $(LOCAL_PATH)/configs/thermal/.ht120.mtc:system/vendor/etc/.tp/.ht120.mtc \
+    $(LOCAL_PATH)/configs/thermal/thermal.conf:system/vendor/etc/.tp/thermal.conf \
+    $(LOCAL_PATH)/configs/thermal/thermal.off.conf:system/vendor/etc/.tp/thermal.off.conf \
+    $(LOCAL_PATH)/configs/thermal/.thermal_policy_00:system/vendor/etc/.tp/.thermal_policy_00
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -104,6 +112,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     lib_driver_cmd_mt66xx \
     libwifi-hal-mt66xx \
     wifi_hal \
@@ -111,13 +120,17 @@ PRODUCT_PACKAGES += \
     hostapd \
     hostapd_cli \
     dhcpcd.conf \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    wificond \
+    wifilogd \
+    wpa_supplicant
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
-    $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
+    $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny \
+    device/mediatek/harmony/configs/etc/wifi/wpa_supplicant.conf:system/vendor/etc/wifi/wpa_supplicant.conf \
+    device/mediatek/harmony/configs/etc/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    device/mediatek/harmony/configs/etc/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.mount.fs=EXT4
@@ -151,9 +164,7 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
-
-# low ram
+# Low ram
 PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 
 # Dalvik
@@ -178,6 +189,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.renderscript@1.0-impl
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
 
 # HW Composer
 PRODUCT_PACKAGES += \
@@ -231,14 +246,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
 # SELinux
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# include other configs
-include device/mediatek/harmony/configs/other/permissions.mk
-include device/mediatek/harmony/configs/other/media.mk
-include device/mediatek/harmony/configs/other/wifi.mk
-include device/mediatek/harmony/configs/other/google_override.mk
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
