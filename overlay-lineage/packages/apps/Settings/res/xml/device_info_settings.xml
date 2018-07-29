@@ -15,6 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
         android:title="@string/about_settings"
         android:paddingStart="@dimen/dashboard_padding_start"
         android:paddingEnd="@dimen/dashboard_padding_end"
@@ -29,6 +30,13 @@
                     android:targetPackage="@string/additional_system_update"
                     android:targetClass="@string/additional_system_update_menu" />
         </Preference>
+
+        <!-- LineageOS updates -->
+        <org.lineageos.internal.preference.deviceinfo.LineageUpdatesPreference
+                android:key="lineage_updates"
+                android:layout="@layout/watch_settings_items"
+                lineage:requiresOwner="true"
+                lineage:requiresPackage="org.lineageos.updater" />
 
         <!-- Device status - launches activity -->
         <Preference android:key="status_info"
@@ -71,6 +79,11 @@
                 android:layout="@layout/watch_settings_items"
                 android:title="@string/device_feedback" />
 
+        <!-- Contributors cloud -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+                android:layout="@layout/watch_settings_items"
+                android:key="contributors" />
+
         <!-- Device hardware model -->
         <Preference
                 android:key="device_model"
@@ -83,6 +96,16 @@
                 android:layout="@layout/watch_settings_items"
                 android:title="@string/firmware_version"
                 android:summary="@string/summary_placeholder"/>
+
+        <!-- LineageOS version -->
+        <org.lineageos.internal.preference.deviceinfo.LineageVersionPreference
+                android:layout="@layout/watch_settings_items"
+                android:key="lineage_version" />
+
+        <!-- LineageOS API version -->
+        <org.lineageos.internal.preference.deviceinfo.LineageAPIVersionPreference
+                android:layout="@layout/watch_settings_items"
+                android:key="lineage_api_level" />
 
         <!-- Security patch level -->
         <Preference android:key="security_patch"

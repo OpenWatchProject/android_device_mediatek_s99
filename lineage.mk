@@ -28,3 +28,7 @@ PRODUCT_BRAND := Mediatek
 TARGET_VENDOR := mediatek
 TARGET_VENDOR_PRODUCT_NAME := Harmony
 TARGET_VENDOR_DEVICE_NAME := mediatek
+
+# Lineage-specific overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-lineage
