@@ -22,4 +22,5 @@
 
 for var in user userdebug eng; do
   add_lunch_combo lineage_harmony-$var
+  add_lunch_combo carbon_harmony-$var
 done
