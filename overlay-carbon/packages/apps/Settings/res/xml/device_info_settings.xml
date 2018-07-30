@@ -86,6 +86,7 @@
 
         <!-- CarbonROM version -->
         <Preference android:key="carbon_version"
+                android:layout="@layout/watch_settings_items"
                 android:title="@string/carbon_version"
                 android:summary="@string/carbon_version_default" />
 
