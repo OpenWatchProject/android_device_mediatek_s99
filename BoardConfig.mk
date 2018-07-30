@@ -127,7 +127,7 @@ TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Include symbols
-TARGET_LD_SHIM_LIBS :=  /system/lib/liblog.so|libmtkshim_log.so:/system/lib64/liblog.so|libmtkshim_log.so:/system/vendor/lib/hw/audio.primary.$(TARGET_BOARD_PLATFORM).so|libmtkshim_audio.so:/system/lib/libui.so|libmtkshim_ui.so:/system/lib64/libui.so|libmtkshim_ui.so:/system/lib/libgui.so|libmtkshim_gui.so:/system/lib64/libgui.so|libmtkshim_gui.so:/system/lib/libMtkOmxVdec.so|libmtkshim_omx.so
+TARGET_LD_SHIM_LIBS :=  /system/lib/liblog.so|libmtkshim_log.so:/system/lib64/liblog.so|libmtkshim_log.so:/system/vendor/lib/hw/audio.primary.$(TARGET_BOARD_PLATFORM).so|libmtkshim_audio.so:/system/lib/libui.so|libmtkshim_ui.so:/system/lib64/libui.so|libmtkshim_ui.so:/system/lib/libgui.so|libmtkshim_gui.so:/system/lib64/libgui.so|libmtkshim_gui.so:/system/lib/libMtkOmxVdec.so|libmtkshim_omx.so:/system/vendor/lib/libJpgDecPipe.so|libmtkshim_atomic.so
 
 # DEXPREOPT
 WITH_DEXPREOPT := true

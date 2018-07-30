@@ -39,6 +39,15 @@ LOCAL_PATH := $(call my-dir)
 
     include $(BUILD_SHARED_LIBRARY)
 
+# atomic symbols
+    include $(CLEAR_VARS)
+
+    LOCAL_SRC_FILES := atomic.cpp
+    LOCAL_MODULE := libmtkshim_atomic
+    LOCAL_PROPRIETARY_MODULE := true
+
+    include $(BUILD_SHARED_LIBRARY)
+
 # omx symbols
     include $(CLEAR_VARS)
 

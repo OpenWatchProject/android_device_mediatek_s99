@@ -177,7 +177,8 @@ PRODUCT_PACKAGES += \
     libmtkshim_ui \
     libmtkshim_gui \
     libmtkshim_omx \
-    libmtkshim_zw
+    libmtkshim_zw \
+    libmtkshim_atomic
 
 # Display
 PRODUCT_PACKAGES += \
