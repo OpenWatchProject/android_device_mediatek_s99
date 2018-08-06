@@ -31,7 +31,8 @@
          * Top | Back -> 49 (Gravity.TOP | Gravity.CENTER_HORIZONTAL)
          * Left -> 51 (Gravity.TOP | Gravity.LEFT)
          * Right -> 53 (Gravity.TOP | Gravity.RIGHT)
+         * Center -> 65 (Gravity.TOP | Gravity.CENTER)
     -->
-    <integer name="hardware_ui_align">49</integer>
+    <integer name="hardware_ui_align">65</integer>
 
 </resources>
