@@ -1,5 +1,5 @@
 # mt6580 platform boardconfig
-LOCAL_PATH := device/mediatek/harmony
+LOCAL_PATH := device/mediatek/s99
 
 # HWC1
 TARGET_USES_HWC1 := true
@@ -33,7 +33,7 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 BOARD_USES_MTK_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/mediatek/harmony/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/mediatek/s99/rootdir/recovery.fstab
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
@@ -46,7 +46,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset 
 TARGET_KERNEL_SOURCE := kernel/mediatek/mt6580
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_HEADER_ARCH := arm
-TARGET_KERNEL_CONFIG := sf6580_weg_l_defconfig
+TARGET_KERNEL_CONFIG := s99_defconfig
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 MTK_APPENDED_DTB_SUPPORT := yes
@@ -57,7 +57,7 @@ TARGET_USES_EARLY_SUSPEND := true
 
 # Display
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/mediatek/harmony/configs/etc/egl.cfg
+BOARD_EGL_CFG := device/mediatek/s99/configs/etc/egl.cfg
 TARGET_SCREEN_HEIGHT := 400
 TARGET_SCREEN_WIDTH := 400
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
@@ -134,4 +134,4 @@ WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
 
 # Inherit from proprietary files
-include vendor/mediatek/harmony/BoardConfigVendor.mk
+include vendor/mediatek/s99/BoardConfigVendor.mk

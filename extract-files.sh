@@ -18,7 +18,7 @@
 
 set -e
 
-export DEVICE=harmony
+export DEVICE=s99
 export VENDOR=mediatek
 
 # Load extract_utils and do some sanity checks

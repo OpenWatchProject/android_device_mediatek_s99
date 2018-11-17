@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/mediatek/harmony/full_harmony.mk)
+$(call inherit-product, device/mediatek/s99/full_s99.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_harmony
+PRODUCT_NAME := lineage_s99
 BOARD_VENDOR := Mediatek
-PRODUCT_DEVICE := harmony
+PRODUCT_DEVICE := s99
 
 PRODUCT_MANUFACTURER := Mediatek
-PRODUCT_MODEL := Harmony
+PRODUCT_MODEL := s99
 
 PRODUCT_BRAND := Mediatek
 TARGET_VENDOR := mediatek
-TARGET_VENDOR_PRODUCT_NAME := Harmony
+TARGET_VENDOR_PRODUCT_NAME := s99
 TARGET_VENDOR_DEVICE_NAME := mediatek
 
 # Lineage-specific overlays

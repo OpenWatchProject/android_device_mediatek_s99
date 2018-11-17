@@ -1,9 +1,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product, vendor/mediatek/harmony/harmony-vendor.mk)
+$(call inherit-product, vendor/mediatek/s99/s99-vendor.mk)
 $(call inherit-product, vendor/watch/config/common_oreo.mk)
 
-LOCAL_PATH := device/mediatek/harmony
+LOCAL_PATH := device/mediatek/s99
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -132,9 +132,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny \
-    device/mediatek/harmony/configs/etc/wifi/wpa_supplicant.conf:system/vendor/etc/wifi/wpa_supplicant.conf \
-    device/mediatek/harmony/configs/etc/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
-    device/mediatek/harmony/configs/etc/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
+    device/mediatek/s99/configs/etc/wifi/wpa_supplicant.conf:system/vendor/etc/wifi/wpa_supplicant.conf \
+    device/mediatek/s99/configs/etc/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    device/mediatek/s99/configs/etc/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.mount.fs=EXT4

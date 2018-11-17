@@ -12,22 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/mediatek/harmony/full_harmony.mk)
+$(call inherit-product, device/mediatek/s99/full_s99.mk)
 
 # Inherit some common Carbon stuff.
 $(call inherit-product, vendor/carbon/config/common.mk)
 $(call inherit-product, vendor/carbon/config/gsm.mk)
 
-PRODUCT_NAME := carbon_harmony
+PRODUCT_NAME := carbon_s99
 BOARD_VENDOR := Mediatek
-PRODUCT_DEVICE := harmony
+PRODUCT_DEVICE := s99
 
 PRODUCT_MANUFACTURER := Mediatek
-PRODUCT_MODEL := Harmony
+PRODUCT_MODEL := S99
 PRODUCT_BRAND := Mediatek
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carbon.maintainer="frap129/Myself5"
+    ro.carbon.maintainer="None"
 
 # Carbon-specific overlays
 DEVICE_PACKAGE_OVERLAYS += \
